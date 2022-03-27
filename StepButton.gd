@@ -1,7 +1,8 @@
 extends Button
 
 
-var index = -1
+var STACK_IND: int = -1
+
 signal update_label(ind)
 signal update_stack(ind)
 
@@ -10,7 +11,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-func _on_Button2_button_down() -> void:
-	index += 1
-	emit_signal("update_label", index)
-	emit_signal("update_stack", index)
+func _on_StepButton_button_down() -> void:
+	STACK_IND += 1
+	emit_signal("update_label", STACK_IND)
+	emit_signal("update_stack", STACK_IND)

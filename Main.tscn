@@ -150,9 +150,9 @@ __meta__ = {
 
 [connection signal="say_stack" from="Background/MarginContainer/Rows/PointerArea/PointerStack" to="StepButton" method="_on_PointerStack_say_stack"]
 [connection signal="text_changed" from="Background/MarginContainer/Rows/InputArea/HBoxContainer/Input" to="CalculateButton" method="_on_Input_text_changed"]
-[connection signal="button_down" from="StepButton" to="StepButton" method="_on_Button2_button_down"]
+[connection signal="button_down" from="StepButton" to="StepButton" method="_on_StepButton_button_down"]
 [connection signal="update_label" from="StepButton" to="Background/MarginContainer/Rows/PointerArea/PointerStack" method="_on_StepButton_update_label"]
 [connection signal="update_stack" from="StepButton" to="Background/MarginContainer/Rows/StackArea/StackStack" method="_on_StepButton_update_stack"]
 [connection signal="button_down" from="CalculateButton" to="Background/MarginContainer/Rows/PointerArea/PointerStack" method="_on_Button_button_down"]
-[connection signal="button_down" from="CalculateButton" to="CalculateButton" method="_on_Button_button_down"]
-[connection signal="stack_update" from="CalculateButton" to="Background/MarginContainer/Rows/PointerArea/PointerStack" method="_on_Button_stack_update"]
+[connection signal="button_down" from="CalculateButton" to="CalculateButton" method="_on_CalculateButton_button_down"]
+[connection signal="stack_update" from="CalculateButton" to="Background/MarginContainer/Rows/PointerArea/PointerStack" method="_on_CalculateButton_stack_update"]
