@@ -5,6 +5,8 @@ signal stack_update(value)
 
 var TEXT: String = ""
 var TOKEN_VEC: Array = []
+export var STACK_STACK_PATH: NodePath
+export var STEP_BUTTON_PATH: NodePath
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,10 +22,11 @@ func _on_Input_text_changed(new_text: String) -> void:
 
 
 func _on_CalculateButton_button_down() -> void:
-	pass # Replace with function body.
 	TOKEN_VEC = []
-	get_node("/root/Game/StepButton").STACK_IND = -1
-	var stack_stack: Node = get_node("/root/Game/Background/MarginContainer/Rows/StackArea/StackStack")
+	get_node(STEP_BUTTON_PATH).STACK_IND = -1
+
+	var stack_stack = get_node(STACK_STACK_PATH)
+
 	stack_stack.STACK = []
 	stack_stack.delete_children(stack_stack)
 

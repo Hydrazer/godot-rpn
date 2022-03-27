@@ -2,6 +2,7 @@ extends HBoxContainer
 
 
 var STACK: Array = []
+export var CALCULATE_BUTTON_PATH: NodePath
 
 func _ready() -> void:
 	pass # Replace with function body.
@@ -15,7 +16,7 @@ static func delete_children(node: Node):
 
 
 func _on_StepButton_update_stack(ind: int) -> void:
-	var token_vec: Array = get_node("/root/Game/CalculateButton").TOKEN_VEC
+	var token_vec: Array = get_node(CALCULATE_BUTTON_PATH).TOKEN_VEC
 	if ind >= token_vec.size():
 		return
 
