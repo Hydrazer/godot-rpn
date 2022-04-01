@@ -19,9 +19,6 @@ static func delete_children(node: Node):
 
 func _on_StepButton_update_stack(ind: int) -> void:
 	var token_vec: Array = get_node(CALCULATE_BUTTON_PATH).TOKEN_VEC
-	if ind >= token_vec.size():
-		return
-
 	var token: Dictionary = token_vec[ind]
 
 	if token["type"] == "int":
@@ -55,3 +52,7 @@ func _on_StepButton_update_stack(ind: int) -> void:
 		label.set_owner(self)
 		label.set_text(item as String)
 		label.add_font_override("font", load("res://DankMono.tres"))
+
+	if ind >= token_vec.size() - 1:
+		get_node(STEP_BUTTON_PATH).visible = false
+		return

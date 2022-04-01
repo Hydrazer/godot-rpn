@@ -128,6 +128,7 @@ placeholder_alpha = 1.0
 script = ExtResource( 1 )
 
 [node name="StepButton" type="Button" parent="."]
+visible = false
 margin_left = 225.0
 margin_top = 435.0
 margin_right = 390.0
