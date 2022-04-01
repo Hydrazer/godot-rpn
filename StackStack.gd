@@ -3,6 +3,8 @@ extends HBoxContainer
 
 var STACK: Array = []
 export var CALCULATE_BUTTON_PATH: NodePath
+export var STEP_BUTTON_PATH: NodePath
+export var ERROR_LABEL_PATH: NodePath
 
 func _ready() -> void:
 	pass # Replace with function body.
@@ -20,23 +22,31 @@ func _on_StepButton_update_stack(ind: int) -> void:
 	if ind >= token_vec.size():
 		return
 
-	var token: String = token_vec[ind]
-	var num_reg: RegEx = RegEx.new()
-	num_reg.compile("\\d+")
+	var token: Dictionary = token_vec[ind]
 
-	if num_reg.search_all(token):
-		STACK.push_back(token)
+	if token["type"] == "int":
+		STACK.push_back(token["val"])
+	elif token["type"] == "op":
+		if STACK.size() < 2:
+			get_node(STEP_BUTTON_PATH).visible = false
+			get_node(ERROR_LABEL_PATH).set_text("Not Enough Numbers")
+		else:
+			var second: int = STACK.pop_back() as int
+			var first: int = STACK.pop_back() as int
+			var token_val = token["val"]
+			if token_val == "+":
+				STACK.push_back(first + second)
+			elif token_val == "-":
+				STACK.push_back(first - second)
+			elif token_val == "/":
+				STACK.push_back(first / second)
+			elif token_val == "*":
+				STACK.push_back(first * second)
 	else:
-		var second: int = STACK.pop_back() as int
-		var first: int = STACK.pop_back() as int
-		if token == "+":
-			STACK.push_back(first + second)
-		elif token == "-":
-			STACK.push_back(first - second)
-		elif token == "/":
-			STACK.push_back(first / second)
-		elif token == "*":
-			STACK.push_back(first * second)
+		get_node(STEP_BUTTON_PATH).visible = false
+		get_node(ERROR_LABEL_PATH).set_text("Invalid Operand")
+
+
 	delete_children(self)
 
 	for item in STACK:

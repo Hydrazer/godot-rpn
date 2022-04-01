@@ -87,6 +87,8 @@ margin_bottom = 230.0
 custom_constants/separation = 15
 script = ExtResource( 6 )
 CALCULATE_BUTTON_PATH = NodePath("../../../../../CalculateButton")
+STEP_BUTTON_PATH = NodePath("../../../../../StepButton")
+ERROR_LABEL_PATH = NodePath("../../../../../ErrorLabel")
 
 [node name="InputArea" type="PanelContainer" parent="Background/MarginContainer/Rows"]
 margin_top = 500.0
@@ -126,10 +128,10 @@ placeholder_alpha = 1.0
 script = ExtResource( 1 )
 
 [node name="StepButton" type="Button" parent="."]
-margin_left = 230.0
-margin_top = 436.0
-margin_right = 395.0
-margin_bottom = 481.0
+margin_left = 225.0
+margin_top = 435.0
+margin_right = 390.0
+margin_bottom = 480.0
 custom_fonts/font = ExtResource( 2 )
 text = "Step"
 script = ExtResource( 5 )
@@ -138,10 +140,10 @@ __meta__ = {
 }
 
 [node name="CalculateButton" type="Button" parent="."]
-margin_left = 42.0
-margin_top = 436.0
-margin_right = 207.0
-margin_bottom = 481.0
+margin_left = 40.0
+margin_top = 435.0
+margin_right = 205.0
+margin_bottom = 480.0
 custom_fonts/font = ExtResource( 2 )
 text = "Calculate"
 script = ExtResource( 3 )
@@ -150,6 +152,20 @@ __meta__ = {
 }
 STACK_STACK_PATH = NodePath("../Background/MarginContainer/Rows/StackArea/StackStack")
 STEP_BUTTON_PATH = NodePath("../StepButton")
+ERROR_LABEL_PATH = NodePath("../ErrorLabel")
+
+[node name="ErrorLabel" type="Label" parent="."]
+margin_left = 410.0
+margin_top = 435.0
+margin_right = 575.0
+margin_bottom = 480.0
+custom_colors/font_color = Color( 0.0392157, 0.137255, 1, 1 )
+custom_fonts/font = ExtResource( 2 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="say_stack" from="Background/MarginContainer/Rows/PointerArea/PointerStack" to="StepButton" method="_on_PointerStack_say_stack"]
 [connection signal="text_changed" from="Background/MarginContainer/Rows/InputArea/HBoxContainer/Input" to="CalculateButton" method="_on_Input_text_changed"]

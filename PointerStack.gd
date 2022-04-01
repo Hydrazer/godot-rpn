@@ -43,7 +43,7 @@ func _on_CalculateButton_stack_update(vec: Array) -> void:
 		var label: Label = Label.new()
 		add_child(label)
 		label.set_owner(self)
-		label.set_text(str(item))
+		label.set_text(str(item["val"]))
 		label.add_font_override("font", load("res://DankMono.tres"))
 		LABEL_VEC.push_back(label)
 	print(len(LABEL_VEC))
