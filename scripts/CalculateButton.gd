@@ -30,7 +30,7 @@ func _on_CalculateButton_button_down() -> void:
 	stack_stack.delete_children(stack_stack)
 
 	var token_reg: RegEx = RegEx.new()
-	token_reg.compile("((?<int>\\d+)|(?<op>[*+-/])|(?<other>\\S))")
+	token_reg.compile("((?<int>-?\\d+)|(?<op>[*+-/])|(?<other>\\S))")
 	var token_reg_search_vec = token_reg.search_all(TEXT)
 
 	get_node(STEP_BUTTON_PATH).visible = token_reg_search_vec.size() as bool
