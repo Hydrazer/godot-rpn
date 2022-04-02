@@ -137,6 +137,7 @@ __meta__ = {
 STACK_STACK_PATH = NodePath("../../../../StackArea/StackStack")
 STEP_BUTTON_PATH = NodePath("../StepButton")
 ERROR_LABEL_PATH = NodePath("../ErrorLabel")
+EXPR_LABEL_PATH = NodePath("../ExprLabel")
 
 [node name="StepButton" type="Button" parent="Background/MarginContainer/Rows/ButtonArea/MarginContainer/ButtonVBox"]
 visible = false

@@ -14,6 +14,7 @@ var TOKEN_VEC: Array = []
 export var STACK_STACK_PATH: NodePath
 export var STEP_BUTTON_PATH: NodePath
 export var ERROR_LABEL_PATH: NodePath
+export var EXPR_LABEL_PATH: NodePath
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -43,6 +44,7 @@ func _on_CalculateButton_button_down() -> void:
 	get_node(STEP_BUTTON_PATH).visible = token_reg_search_vec.size() as bool
 	get_node(STEP_BUTTON_PATH).STACK_IND = -1
 	get_node(ERROR_LABEL_PATH).set_text("")
+	get_node(EXPR_LABEL_PATH).set_text("")
 
 	for t in token_reg.search_all(TEXT):
 		var token_int: String = t.get_string("int")
