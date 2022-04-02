@@ -5,6 +5,7 @@ var STACK: Array = []
 export var CALCULATE_BUTTON_PATH: NodePath
 export var STEP_BUTTON_PATH: NodePath
 export var ERROR_LABEL_PATH: NodePath
+export var DANK_MONO_30: Font
 
 func _ready() -> void:
 	pass # Replace with function body.
@@ -51,7 +52,7 @@ func _on_StepButton_update_stack(ind: int) -> void:
 		add_child(label)
 		label.set_owner(self)
 		label.set_text(item as String)
-		label.add_font_override("font", load("res://DankMono.tres"))
+		label.add_font_override("font", DANK_MONO_30)
 
 	if ind >= token_vec.size() - 1:
 		get_node(STEP_BUTTON_PATH).visible = false

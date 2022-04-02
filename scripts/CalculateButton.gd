@@ -24,10 +24,6 @@ func _on_Input_text_changed(new_text: String) -> void:
 
 func _on_CalculateButton_button_down() -> void:
 	TOKEN_VEC = []
-	get_node(ERROR_LABEL_PATH).set_text("")
-	get_node(STEP_BUTTON_PATH).visible = true
-	get_node(STEP_BUTTON_PATH).STACK_IND = -1
-
 	var stack_stack = get_node(STACK_STACK_PATH)
 
 	stack_stack.STACK = []
@@ -35,6 +31,11 @@ func _on_CalculateButton_button_down() -> void:
 
 	var token_reg: RegEx = RegEx.new()
 	token_reg.compile("((?<int>\\d+)|(?<op>[*+-/])|(?<other>\\S+))")
+	var token_reg_search_vec = token_reg.search_all(TEXT)
+
+	get_node(STEP_BUTTON_PATH).visible = token_reg_search_vec.size() as bool
+	get_node(STEP_BUTTON_PATH).STACK_IND = -1
+	get_node(ERROR_LABEL_PATH).set_text("")
 
 	for t in token_reg.search_all(TEXT):
 		var token_int: String = t.get_string("int")

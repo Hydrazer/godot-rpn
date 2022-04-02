@@ -3,6 +3,7 @@ extends HBoxContainer
 
 var STACK: Array = []
 var LABEL_VEC: Array = []
+export var DANK_MONO_30: Font
 
 signal say_stack
 
@@ -44,6 +45,6 @@ func _on_CalculateButton_stack_update(vec: Array) -> void:
 		add_child(label)
 		label.set_owner(self)
 		label.set_text(str(item["val"]))
-		label.add_font_override("font", load("res://DankMono.tres"))
+		label.add_font_override("font", DANK_MONO_30)
 		LABEL_VEC.push_back(label)
 	print(len(LABEL_VEC))
