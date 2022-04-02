@@ -52,7 +52,12 @@ func _on_StepButton_update_stack(ind: int) -> void:
 
 	else:
 		get_node(STEP_BUTTON_PATH).visible = false
-		get_node(ERROR_LABEL_PATH).set_text("Invalid Operand")
+		get_node(ERROR_LABEL_PATH).set_text(
+			"Invalid Operand `{op}`. Use [{op_list}]".format({
+				"op": token["val"],
+				"op_list": get_node(CALCULATE_BUTTON_PATH).OPERAND_LIST_ORIG.join(", ")
+			})
+		)
 
 
 	delete_children(self)

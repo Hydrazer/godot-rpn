@@ -4,6 +4,12 @@ extends Button
 signal stack_update(value)
 
 var TEXT: String = ""
+var OPERAND_LIST_ORIG: PoolStringArray = ["*","+","-","/"]
+var OPERAND_LIST: PoolStringArray = OPERAND_LIST_ORIG
+
+#for i in range(OPERAND_LIST.size()):
+#	OPERAND_LIST[i] = "[{op}]".format({"op": OPERAND_LIST[i]})
+
 var TOKEN_VEC: Array = []
 export var STACK_STACK_PATH: NodePath
 export var STEP_BUTTON_PATH: NodePath
@@ -11,8 +17,8 @@ export var ERROR_LABEL_PATH: NodePath
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	for i in range(OPERAND_LIST.size()):
+		OPERAND_LIST[i] = "[{op}]".format({"op": OPERAND_LIST[i]})
 
 #func _on_Button_button_down() -> void:
 
@@ -30,7 +36,8 @@ func _on_CalculateButton_button_down() -> void:
 	stack_stack.delete_children(stack_stack)
 
 	var token_reg: RegEx = RegEx.new()
-	token_reg.compile("((?<int>-?\\d+)|(?<op>[*+-/])|(?<other>\\S))")
+	token_reg.compile("((?<int>-?\\d+)|(?<op>{op})|(?<other>\\S))".format({"op": OPERAND_LIST.join("|")}))
+
 	var token_reg_search_vec = token_reg.search_all(TEXT)
 
 	get_node(STEP_BUTTON_PATH).visible = token_reg_search_vec.size() as bool
